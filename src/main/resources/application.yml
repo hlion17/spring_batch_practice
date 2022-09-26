@@ -1,0 +1,32 @@
+# default
+spring:
+  profiles:
+    active: local
+
+---
+spring:
+  cofig:
+    activate:
+      on-profiles: local
+  batch:
+    job:
+      names: ${job.name.HOME}
+      enabled: false
+    jdbc:
+      initialize-schema: always
+  datasource:
+    url: jdbc:mysql://127.0.0.1:13306/test
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    hikari:
+      password: 1234
+  jpa:
+    show-sql: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  jpa:
+    database: h2
